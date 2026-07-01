@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>存證信函產生器</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="workspace">
+      <aside class="panel" aria-label="填寫內容">
+        <div class="panel-header">
+          <div>
+            <h1>存證信函</h1>
+            <p>填入資料後產出郵局格式 PDF</p>
+          </div>
+          <div class="actions">
+            <button type="button" id="saveDraft">儲存</button>
+            <button type="button" id="loadDraft">載入</button>
+            <button type="button" id="clearDraft">清空</button>
+          </div>
+        </div>
+
+        <form id="letterForm" autocomplete="on">
+          <fieldset>
+            <legend>寄件人</legend>
+            <label>
+              姓名
+              <input name="senderName" placeholder="寄件人姓名">
+            </label>
+            <label>
+              地址
+              <textarea name="senderAddress" rows="2" placeholder="完整地址"></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <div class="fieldset-title">
+              <legend>收件人</legend>
+              <button type="button" class="small-button" id="addRecipient">增加收件人</button>
+            </div>
+            <div id="recipients" class="person-list"></div>
+          </fieldset>
+
+          <fieldset>
+            <legend>副本收件人</legend>
+            <label>
+              姓名
+              <input name="ccName" placeholder="副本收件人姓名，可留空">
+            </label>
+            <label>
+              地址
+              <textarea name="ccAddress" rows="2" placeholder="副本收件人地址，可留空"></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>信函內容</legend>
+            <label>
+              內容
+              <textarea class="body-input" name="body" rows="12" placeholder="請輸入存證信函正文"></textarea>
+            </label>
+            <div class="content-tools">
+              <label class="checkbox-label">
+                <input type="checkbox" name="autoFullWidth" checked>
+                英文、數字、符號自動轉全形
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>輸出</legend>
+            <div class="stats" id="stats"></div>
+            <button type="button" class="primary" id="printPdf">產出 PDF</button>
+          </fieldset>
+        </form>
+      </aside>
+
+      <section class="preview-area" aria-label="預覽">
+        <div class="preview-toolbar">
+          <strong>預覽</strong>
+          <span>每頁 10 行，每行 20 字</span>
+        </div>
+        <div id="preview" class="preview"></div>
+      </section>
+    </section>
+  </main>
+
+  <template id="recipientTemplate">
+    <section class="person-card">
+      <div class="person-card-title">
+        <h3></h3>
+        <button type="button" class="icon-button remove-recipient" aria-label="移除收件人">移除</button>
+      </div>
+      <label>
+        姓名
+        <input data-field="name" placeholder="收件人姓名">
+      </label>
+      <label>
+        地址
+        <textarea data-field="address" rows="2" placeholder="完整地址"></textarea>
+      </label>
+    </section>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
