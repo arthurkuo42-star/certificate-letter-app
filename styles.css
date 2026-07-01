@@ -295,16 +295,16 @@ textarea {
 .sender-name,
 .recipient-name,
 .third-name {
-  left: 112mm;
-  width: 58mm;
+  left: 117mm;
+  width: 60mm;
   height: 5mm;
 }
 
 .sender-address,
 .recipient-address,
 .third-address {
-  left: 112mm;
-  width: 72mm;
+  left: 126mm;
+  width: 71mm;
   height: 5mm;
 }
 
